@@ -4,6 +4,7 @@ from ssscrapy.spider import Spider
 
 class BaiduSpider(Spider):
     start_urls = ["https://www.baidu.com", "https://www.baidu.com"]
+    custom_settings = {"CONCURRENCY": 8}
 
     def parse(self, response):
         print('parse', response)
@@ -19,4 +20,3 @@ class BaiduSpider(Spider):
 
     def parse_detail(self, response):
         print('parse_detail', response)
-

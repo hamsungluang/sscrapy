@@ -13,12 +13,14 @@ from ssscrapy.task_manager import TaskManager
 
 class Engine:
 
-    def __init__(self, settings):
+    def __init__(self, crawler):
+        self.crawler = crawler
+        self.settings = self.crawler.settings
         self.downloader: Optional[Downloader] = None
         self.scheduler: Optional[Scheduler] = None
         self.spider: Optional[Spider] = None
         self.start_requests: Optional[Generator] = None
-        self.task_manager: TaskManager = TaskManager(settings.getint('CONCURRENCY'))
+        self.task_manager: TaskManager = TaskManager(self.settings.getint('CONCURRENCY'))
         self.running = False
 
     async def start_spider(self, spider):

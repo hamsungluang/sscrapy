@@ -1,3 +1,4 @@
+from copy import deepcopy
 from importlib import import_module
 from ssscrapy.settings import default_settings
 from collections.abc import MutableMapping
@@ -78,3 +79,6 @@ class SettingsManager(MutableMapping):
 
     def __len__(self):
         return len(self.attributes)
+
+    def copy(self):
+        return deepcopy(self)

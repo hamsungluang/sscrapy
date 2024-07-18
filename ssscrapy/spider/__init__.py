@@ -6,6 +6,13 @@ class Spider:
     def __init__(self):
         if not hasattr(self, 'start_urls'):
             self.start_urls = []
+        self.crawler = None
+
+    @classmethod
+    def create_instance(cls, crawler):
+        o = cls()
+        o.crawler = crawler
+        return o
 
     def start_requests(self):
         if self.start_urls:
